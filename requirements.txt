@@ -2,12 +2,14 @@ certifi==2018.4.16
 chardet==3.0.4
 click==6.7
 dash==0.21.1
+dash-auth==1.0.2
 dash-core-components==0.25.1
 dash-html-components==0.11.0
 dash-renderer==0.13.0
 decorator==4.3.0
 Flask==1.0.2
 Flask-Compress==1.4.0
+Flask-SeaSurf==0.2.2
 gunicorn==19.9.0
 idna==2.7
 ipython-genutils==0.2.0
