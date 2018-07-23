@@ -54,7 +54,8 @@ def update_table(max_rows=1000):
 
 def serve_layout():
 	return html.Div(children=[html.H4(children='List of Hikari Orders'),update_table()])
-
+	
+app.title='Hikari Dashboard' 
 app.layout = serve_layout
 app.css.append_css({
     'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
