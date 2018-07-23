@@ -5,6 +5,7 @@ import dash_html_components as html
 from dash.dependencies import Output, Event
 import pandas as pd
 import dropbox
+import dash_table_experiments as dt
 from io import StringIO
 
 VALID_USERNAME_PASSWORD_PAIRS = [
@@ -36,22 +37,27 @@ def update_table(max_rows=1000):
 		except:
 			df = temp_df
 
-	df.sort_values(by=['Epoch_Time'],ascending=False,inplace=True)
+	df.sort_values(by=['Status','Epoch_Time'],ascending=False,inplace=True)
 
-	return html.Table(
-	# Header
-	[html.Tr([html.Th(col) for col in df.columns])] +
+	return dt.DataTable(
+        rows=df.to_dict('records'),
 
-	# Body
-	[html.Tr([
-		html.Td(df.iloc[i][col]) for col in df.columns
-	]) for i in range(min(len(df), max_rows))]
-	)
+        # optional - sets the order of columns
+        columns=df.columns,
+
+        row_selectable=False,
+        filterable=True,
+        sortable=True,
+        selected_row_indices=[],
+        id='hikari-orders'
+    )
 
 def serve_layout():
 	return html.Div(children=[html.H4(children='List of Hikari Orders'),update_table()])
 
 app.layout = serve_layout
-
+app.css.append_css({
+    'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
+})
 if __name__ == '__main__':
     app.run_server(debug=True)
