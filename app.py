@@ -44,7 +44,7 @@ def update_table(max_rows=1000):
 
         # optional - sets the order of columns
         columns=df.columns,
-
+        min_height=2000,
         row_selectable=False,
         filterable=True,
         sortable=True,
@@ -54,7 +54,7 @@ def update_table(max_rows=1000):
 
 def serve_layout():
 	return html.Div(children=[html.H4(children='List of Hikari Orders'),update_table()])
-	
+
 app.title='Hikari Dashboard' 
 app.layout = serve_layout
 app.css.append_css({
