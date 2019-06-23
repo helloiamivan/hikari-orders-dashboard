@@ -9,7 +9,7 @@ import dash_table_experiments as dt
 from io import StringIO
 
 VALID_USERNAME_PASSWORD_PAIRS = [
-    ['hikari', 'mobility']
+    [USER, PASSWORD]
 ]
 
 app = dash.Dash('Hikari')
